@@ -185,7 +185,7 @@ h1 em{font-style:normal;color:var(--pink-deep)}
 <script>
 /* ==================== 商家配置区 ==================== */
 /* 说明：码库只存哈希，源码里看不到任何明文访问码，客人翻源码也拿不到别人的码。
-   明文码在配套的《访问码台账.csv》里，你自己留着按顺序发给客人。 */
+   明文码由商家在本地按顺序保管并发给客人，页面源码里看不到。 */
 
 const ACCESS_SALT = "jinan_love_2026";   // 加盐，不要改动（改了所有码失效）
 const MAX_USE_PER_CODE = 3;              // 每个码在本机可用次数（容错换设备/清缓存）
@@ -1012,7 +1012,7 @@ function roundRect(ctx,x,y,w,h,r){
       '<p><b>每码可用次数：</b>' + MAX_USE_PER_CODE + ' 次</p>' +
       '<p><b>有效期至：</b>' + EXPIRE_DATE + (isExpired() ? '（已过期）' : '') + '</p>' +
       '<p><b>本机使用记录：</b><br>' + (used.length ? used.join('<br>') : '暂无') + '</p>' +
-      '<p class="muted">码的明文在《访问码台账.csv》里，按顺序发出后在表格里登记订单号即可。</p>';
+      '<p class="muted">码由商家在本地按顺序保管，发出后登记订单号即可。</p>';
     document.querySelector('.wrap').appendChild(box);
     return;
   }
