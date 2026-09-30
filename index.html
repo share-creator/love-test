@@ -184,12 +184,10 @@ h1 em{font-style:normal;color:var(--pink-deep)}
 
 <script>
 /* ==================== 商家配置区 ==================== */
-/* 说明：码库只存哈希，源码里看不到任何明文访问码，客人翻源码也拿不到别人的码。
-   明文码由商家在本地按顺序保管并发给客人，页面源码里看不到。 */
+/* 说明：全网通用一个固定访问密码，所有客人都输这一串。
+   想改密码，只改下面 ACCESS_CODE 的值即可（保持 6 位数字）。 */
 
-const ACCESS_SALT = "jinan_love_2026";   // 加盐，不要改动（改了所有码失效）
-const MAX_USE_PER_CODE = 3;              // 每个码在本机可用次数（容错换设备/清缓存）
-const EXPIRE_DATE = "2027-12-31";        // 码库整体有效期，过期后全部失效
+const ACCESS_CODE = "520520";            // 固定访问密码（6 位数字），所有客人通用
 
 /* 结果判定参数（决定 8 种剧本的分布，别乱改）
    判定方式：先算三维度在你全部有效作答里的占比，占比 ≥30% 记为「高」；
@@ -198,127 +196,6 @@ const HIGH_PCT = 30;
 const MIN_VALID = 11;
 const BRAND_LINE = "";                   // 结果图底部署名，留空则不显示，例如："金安念宠 · 出品"
 
-/* 访问码哈希库（120 个） */
-const CODE_HASHES = ["b1461423e0cbd5b0",
-"7c0e95e2aad04ec6",
-"c933ae9bc508f71a",
-"b4ad6c1693dc139b",
-"45c4a9a90b4f94d1",
-"c93d2de5253cfe8d",
-"8dd92d4d5236a3ab",
-"a7c7b0cd7703ab3a",
-"67344c96151bb264",
-"744b92a03dcad4a9",
-"e46047da93065732",
-"8080c9e67d283f1a",
-"6d7037b1b10cdca9",
-"efff9f2d784e3667",
-"a858b886e9901564",
-"0001511af0bbf902",
-"60b96f1ddd054984",
-"6491591d00dd8e2a",
-"649285de4142b043",
-"0cf0c27e33028987",
-"3ddac4c502396a16",
-"b0e06aa9add2e6f9",
-"6c097c1080831604",
-"f0838835405a673f",
-"102c4a23c2027268",
-"a5c64c879a5d5778",
-"189b220053ce8411",
-"49f23c237f6b0a5e",
-"bb01ca96030b2bb9",
-"bbfd559cc3615431",
-"a55739c5184ff765",
-"a1480b14961690b7",
-"43fdd04d31fdb4d2",
-"bd01ae0d2a329e78",
-"de42d7414f8c38c7",
-"0c39622475effd46",
-"0a81952ad19f2334",
-"7f0566bc24937dc4",
-"ca6f7d91c9765a46",
-"a7255f8907b1097a",
-"9b0a23fa8beee242",
-"5a4277ee677b9554",
-"0710650b890009d5",
-"acb6e7eb8db08a91",
-"fe03cbecde3b0799",
-"7cb3217843ea531d",
-"a08a721ed76efe56",
-"14ba1f4b4f8e1caf",
-"97aae7035de23b58",
-"e31748961de02930",
-"89b90735320248b3",
-"c47cd52126290775",
-"3cdd65d13eaf3092",
-"1c8b0511f0903f15",
-"8a02ded568026ef4",
-"faae1f140bc16ff7",
-"eebf263d3fa73aac",
-"a3dde209465bbe8c",
-"0f20e04d0eaedd2b",
-"8a2a6686113fda04",
-"00cc8a2dac3ee461",
-"ea42038080e80dcc",
-"152be7bed11537e9",
-"a4cdea45ab22acc6",
-"e3ee9c618b94ebca",
-"56360a8aa183b675",
-"afcbec642c7111a2",
-"92f83b274dcbbe6e",
-"a84b939a0a3632c2",
-"c41af7cfba244a00",
-"fbca226b3fb6b93e",
-"39a0a615039636f3",
-"d05f25fec2eab139",
-"e8a22e3b62092a15",
-"aa4619d8d5fdd068",
-"cb63eabab0c611aa",
-"4b61133e2aaf84cb",
-"06e38946ba6aa911",
-"700282cff2918097",
-"aa7f9e149e1b31a9",
-"234991f61a026851",
-"d59c62af5e0e2387",
-"daf4d350250acdf8",
-"2f181c84507c655b",
-"90236edd0fec2ca1",
-"fcf6a8a583dc44c3",
-"595d0ed928ae5e3b",
-"0a79e28e5db90534",
-"dc2e34d6b649865e",
-"2385ba490c5b2275",
-"ccbb1c1b5ba44a9c",
-"77b8553e347e39f8",
-"da13ae89138abbf8",
-"b09396c651fa1793",
-"20bb2f9bb892d15b",
-"130d3b8da532b9e1",
-"12fba28e70097d0c",
-"79a33699b743975f",
-"6b023882acbfbaa0",
-"73dca60ad6ac00da",
-"62cef93962895178",
-"51a2a36e424fd27e",
-"f8fca4f78ffc4416",
-"2398d000528edac2",
-"9281db7bf73a8369",
-"d56654025911da24",
-"94d1cf96fcd80413",
-"b542f2934a415240",
-"3201375a3be62a3e",
-"7176e9f9723bf8fb",
-"016624dca797c0be",
-"f8e8ed21b9c0d90e",
-"2f2c81549cb85299",
-"4103ea3267d6c4c5",
-"2213da4386060073",
-"2ce7a104d59463ec",
-"997b35165072d02a",
-"912473b55d7c27bb",
-"f41b807792db8ec4",
-"1eb300019f104ee3"];
 
 /* ==================== 内容配置区 ==================== */
 
@@ -598,11 +475,6 @@ function saveStore(s){
 }
 let store = loadStore();
 
-function isExpired(){
-  if(!EXPIRE_DATE) return false;
-  return new Date().getTime() > new Date(EXPIRE_DATE + " 23:59:59").getTime();
-}
-
 function checkCode(){
   const v = (document.getElementById('codeInput').value || "").trim();
   const err = document.getElementById('codeErr');
@@ -616,34 +488,21 @@ function checkCode(){
     return;
   }
 
-  if(isExpired()){ err.textContent = "访问码已过期，请联系卖家补发"; return; }
-
-  const h = hashCode(ACCESS_SALT + v);
-  const idx = CODE_HASHES.indexOf(h);
-
-  if(idx < 0){
+  if(v === ACCESS_CODE){
+    store.tries = 0; store.lockUntil = 0;
+    store.unlocked = 1;
+    store.progress = null;
+    saveStore(store);
+    err.textContent = "";
+    enterIntro();
+  } else {
     store.tries = (store.tries || 0) + 1;
     if(store.tries >= 5){ store.lockUntil = now + 60*1000; store.tries = 0; }
     saveStore(store);
     err.textContent = "访问码无效，请核对后重试";
-    return;
   }
-
-  const used = store.uses[idx] || 0;
-  if(used >= MAX_USE_PER_CODE){
-    err.textContent = "该访问码已达使用上限，请联系卖家";
-    return;
-  }
-
-  store.uses[idx] = used + 1;
-  store.tries = 0; store.lockUntil = 0;
-  store.unlocked = idx;
-  store.progress = null;
-  saveStore(store);
-
-  err.textContent = "";
-  enterIntro();
 }
+
 document.getElementById('codeInput').addEventListener('keydown', e=>{
   if(e.key === 'Enter') checkCode();
 });
@@ -996,48 +855,37 @@ function roundRect(ctx,x,y,w,h,r){
   ctx.closePath();
 }
 
-/* ==================== 商家后台：?admin=1 查看本机发码/用码情况 ==================== */
+/* ==================== 商家后台：?admin=1 查看本机使用情况 ==================== */
 (function(){
   const q = new URLSearchParams(location.search);
   const admin = q.get('admin');
   if(admin === '1'){
     document.getElementById('pageCode').classList.add('hidden');
-    const used = Object.keys(store.uses || {}).map(k=>'第 ' + (parseInt(k)+1) + ' 号：已使用 ' + store.uses[k] + ' 次');
+    const status = store.unlocked ? '本机已解锁（曾经输过密码）' : '本机尚未解锁';
     const box = document.createElement('div');
     box.className = 'card admin-box';
     box.style.marginTop = '30px';
     box.innerHTML =
       '<h1 style="font-size:20px">商家后台（仅本机可见）</h1>' +
-      '<p><b>码库总量：</b>' + CODE_HASHES.length + ' 个</p>' +
-      '<p><b>每码可用次数：</b>' + MAX_USE_PER_CODE + ' 次</p>' +
-      '<p><b>有效期至：</b>' + EXPIRE_DATE + (isExpired() ? '（已过期）' : '') + '</p>' +
-      '<p><b>本机使用记录：</b><br>' + (used.length ? used.join('<br>') : '暂无') + '</p>' +
-      '<p class="muted">码由商家在本地按顺序保管，发出后登记订单号即可。</p>';
+      '<p><b>访问密码：</b>' + ACCESS_CODE + '（所有客人通用）</p>' +
+      '<p><b>本机状态：</b>' + status + '</p>' +
+      '<p class="muted">想改密码，改源码里 ACCESS_CODE 的值即可。</p>';
     document.querySelector('.wrap').appendChild(box);
     return;
   }
 
   /* 带码直链 ?code= 自动填充并验证（用于自动发货：客人点开即进，无需手输密码） */
   const preset = q.get('code');
-  if(preset && admin !== '1'){
-    if(store.unlocked !== null && store.unlocked !== undefined){
-      if(!isExpired()) enterIntro();   // 已解锁过，免密进，不重复消耗次数
-      return;
-    }
+  if(preset){
+    if(store.unlocked){ enterIntro(); return; }
     const inp = document.getElementById('codeInput');
     if(inp) inp.value = preset;
-    checkCode();                       // 首次自动验证（成功则消耗 1 次并进入）
-    if(store.unlocked !== null && store.unlocked !== undefined) return;
+    checkCode();
+    if(store.unlocked) return;
   }
 
   /* 已解锁过 → 免密直接进入 */
-  if(store.unlocked !== null && store.unlocked !== undefined){
-    if(isExpired()){
-      document.getElementById('codeNote').textContent = '访问码已过期，请联系卖家补发';
-    } else {
-      enterIntro();
-    }
-  }
+  if(store.unlocked){ enterIntro(); }
 })();
 </script>
 </body>
