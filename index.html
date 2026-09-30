@@ -1,0 +1,1031 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#FBE9EE">
+<meta name="format-detection" content="telephone=no">
+<title>爱情剧本｜你是哪一种</title>
+<style>
+:root{
+  --pink:#E88BA0;
+  --pink-deep:#D4687F;
+  --pink-soft:#FBE9EE;
+  --pink-line:#F0CFD8;
+  --ink:#4A2C3A;
+  --muted:#A88B96;
+  --bg:#FDF3F5;
+  --paper:#ffffff;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  min-height:100vh;
+  background:linear-gradient(160deg,#FDF3F5 0%,#FBE9EE 60%,#F8DDE5 100%);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  line-height:1.6;
+}
+.wrap{max-width:680px;margin:0 auto;padding:20px 18px 60px}
+.hidden{display:none!important}
+.card{
+  background:var(--paper);
+  border-radius:22px;
+  padding:28px 22px;
+  box-shadow:0 4px 24px rgba(212,104,127,.08);
+  border:1px solid rgba(232,139,160,.15);
+}
+.progress{height:4px;background:rgba(232,139,160,.15);border-radius:2px;margin:8px 0 22px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--pink-deep);border-radius:2px;transition:width .3s}
+.eyebrow{font-size:13px;color:var(--pink-deep);letter-spacing:2px;font-weight:600;margin-bottom:14px}
+h1{font-size:26px;font-weight:800;line-height:1.35;margin:0 0 10px}
+h1 em{font-style:normal;color:var(--pink-deep)}
+.lead{font-size:14px;color:#7A5A68;line-height:1.8;margin:0 0 20px}
+.muted{color:var(--muted);font-size:13px}
+.btn{
+  display:block;width:100%;border:none;border-radius:16px;padding:16px;
+  font-size:16px;font-weight:700;cursor:pointer;
+  background:var(--pink-deep);color:#fff;
+  box-shadow:0 6px 18px rgba(212,104,127,.25);
+  transition:transform .1s;
+}
+.btn:active{transform:scale(.98)}
+.btn.ghost{background:transparent;color:var(--pink-deep);box-shadow:none;border:1.5px solid var(--pink-line)}
+.btn.small{width:auto;display:inline-block;padding:12px 22px;font-size:14px}
+.code-input{
+  width:100%;text-align:center;font-size:30px;letter-spacing:10px;
+  padding:14px;border:2px solid var(--pink-line);border-radius:14px;
+  background:#fff;color:var(--ink);outline:none;
+}
+.code-input:focus{border-color:var(--pink)}
+.opt{
+  display:flex;align-items:flex-start;gap:14px;
+  width:100%;text-align:left;
+  background:#fff;border:1.5px solid var(--pink-line);
+  border-radius:16px;padding:16px 16px;margin-bottom:12px;
+  cursor:pointer;transition:.15s;
+}
+.opt:active{transform:scale(.99)}
+.opt .dot{
+  flex:0 0 22px;width:22px;height:22px;border-radius:50%;
+  border:2px solid var(--pink-line);margin-top:3px;
+  display:flex;align-items:center;justify-content:center;
+}
+.opt .txt b{display:block;font-size:16px;font-weight:700;color:var(--ink);line-height:1.4}
+.opt.selected{border-color:var(--pink-deep);background:var(--pink-soft)}
+.opt.selected .dot{border-color:var(--pink-deep);background:var(--pink-deep)}
+.opt.selected .dot::after{content:"";width:10px;height:10px;border-radius:50%;background:#fff}
+.cat{font-size:13px;color:var(--pink-deep);font-weight:600;margin-bottom:10px}
+.q-title{font-size:21px;font-weight:800;line-height:1.45;margin:0 0 22px}
+.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.nav-row .hint{font-size:12px;color:var(--muted)}
+.result-hero{text-align:center;padding:36px 20px 24px}
+.result-hero .stamp{
+  display:inline-block;padding:6px 16px;border-radius:20px;
+  background:var(--pink-soft);color:var(--pink-deep);
+  font-size:13px;letter-spacing:2px;margin-bottom:16px;
+}
+.result-hero h1{font-size:30px}
+.result-hero .quote{font-size:14px;color:var(--muted);margin-top:8px}
+.sec{margin-top:18px}
+.sec h3{font-size:14px;color:var(--pink-deep);letter-spacing:1px;margin:0 0 10px}
+.sec p{font-size:15px;color:#5A3D4A;line-height:1.85;margin:0}
+.dim-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px}
+.dim-row .name{flex:0 0 60px;color:#7A5A68}
+.dim-row .bar{flex:1;height:8px;background:var(--pink-soft);border-radius:4px;overflow:hidden}
+.dim-row .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--pink-deep));border-radius:4px}
+.dim-row .num{flex:0 0 30px;text-align:right;color:var(--pink-deep);font-weight:700}
+.lines{padding-left:0;list-style:none;margin:0}
+.lines li{
+  padding:12px 14px;background:var(--pink-soft);border-radius:12px;
+  margin-bottom:8px;font-size:14.5px;color:var(--ink);
+}
+.tag-row{text-align:center;margin:10px 0 0}
+.tag-row span{
+  display:inline-block;margin:3px;padding:4px 12px;border-radius:14px;
+  background:#fff;border:1px solid var(--pink-line);font-size:12px;color:var(--pink-deep);
+}
+.note{
+  background:var(--pink-soft);border-radius:14px;padding:14px 16px;
+  font-size:13px;color:#7A5A68;line-height:1.7;margin-top:16px;
+  border:1px solid var(--pink-line);
+}
+.share-img{width:100%;display:block;border-radius:16px;margin-top:12px;border:1px solid var(--pink-line)}
+.tip-longpress{
+  text-align:center;font-size:12.5px;color:var(--muted);
+  background:#fff;border:1px dashed var(--pink-line);border-radius:12px;
+  padding:10px;margin-top:10px;
+}
+.err{color:#C0392B;font-size:13px;margin-top:10px;text-align:center;min-height:18px}
+.admin-box{font-size:13px;color:#5A3D4A;line-height:1.9}
+.admin-box b{color:var(--pink-deep)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 验证码页 -->
+  <div id="pageCode" class="card" style="margin-top:40px">
+    <div style="text-align:center;margin-bottom:20px">
+      <div style="font-size:40px;margin-bottom:10px">&#128140;</div>
+      <h1 style="font-size:22px">爱情剧本测试</h1>
+      <p class="muted">输入 6 位访问码，解锁你的感情档案</p>
+    </div>
+    <input class="code-input" id="codeInput" type="tel" inputmode="numeric" maxlength="6" placeholder="······" autocomplete="off">
+    <div id="codeErr" class="err"></div>
+    <button class="btn" onclick="checkCode()">解锁</button>
+    <div class="note" id="codeNote"></div>
+  </div>
+
+  <!-- 开场页 -->
+  <div id="pageIntro" class="card hidden" style="margin-top:30px">
+    <div style="text-align:center;margin-bottom:20px">
+      <div style="font-size:44px;margin-bottom:8px">&#127800;</div>
+      <div class="eyebrow">LOVE ARCHIVE · 私人档案</div>
+      <h1>你骨子里是<em>哪种爱情</em>？</h1>
+      <p class="lead">
+        心理学说，一段感情由三种成分构成：亲密、激情、承诺。<br>
+        通过 22 个感情里的真实情境，读取你在这三角里的模样，<br>
+        最后告诉你：你的爱情，是哪一种剧本。
+      </p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px">
+      <div style="background:var(--pink-soft);border-radius:14px;padding:14px;text-align:center">
+        <b style="display:block;color:var(--pink-deep);font-size:18px">22 情境</b>
+        <small class="muted">约 4 分钟</small>
+      </div>
+      <div style="background:var(--pink-soft);border-radius:14px;padding:14px;text-align:center">
+        <b style="display:block;color:var(--pink-deep);font-size:18px">8 种剧本</b>
+        <small class="muted">基于爱情三角理论</small>
+      </div>
+    </div>
+    <button class="btn" onclick="startQuiz()">开始读心</button>
+    <div class="note">本测试基于斯滕伯格爱情三角理论的通俗化改编，结果供自我探索参考，不构成任何专业评估。</div>
+  </div>
+
+  <!-- 答题页 -->
+  <div id="pageQuiz" class="hidden" style="margin-top:20px">
+    <div class="progress"><i id="bar" style="width:0%"></i></div>
+    <div class="card">
+      <div class="cat" id="qCat"></div>
+      <h2 class="q-title" id="qTitle"></h2>
+      <div id="qOpts"></div>
+      <div class="nav-row">
+        <button class="btn ghost small" id="prevBtn" onclick="prevQ()">上一题</button>
+        <span class="hint" id="qHint">选择后自动进入下一题</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 结果页 -->
+  <div id="pageResult" class="hidden" style="margin-top:20px"></div>
+
+</div>
+
+<script>
+/* ==================== 商家配置区 ==================== */
+/* 说明：码库只存哈希，源码里看不到任何明文访问码，客人翻源码也拿不到别人的码。
+   明文码在配套的《访问码台账.csv》里，你自己留着按顺序发给客人。 */
+
+const ACCESS_SALT = "jinan_love_2026";   // 加盐，不要改动（改了所有码失效）
+const MAX_USE_PER_CODE = 3;              // 每个码在本机可用次数（容错换设备/清缓存）
+const EXPIRE_DATE = "2027-12-31";        // 码库整体有效期，过期后全部失效
+
+/* 结果判定参数（决定 8 种剧本的分布，别乱改）
+   判定方式：先算三维度在你全部有效作答里的占比，占比 ≥30% 记为「高」；
+   若有效作答不足 8 题（大半选了「无所谓」），则视为尚未成型，判为无爱状态。 */
+const HIGH_PCT = 30;
+const MIN_VALID = 11;
+const BRAND_LINE = "";                   // 结果图底部署名，留空则不显示，例如："金安念宠 · 出品"
+
+/* 访问码哈希库（120 个） */
+const CODE_HASHES = ["b1461423e0cbd5b0",
+"7c0e95e2aad04ec6",
+"c933ae9bc508f71a",
+"b4ad6c1693dc139b",
+"45c4a9a90b4f94d1",
+"c93d2de5253cfe8d",
+"8dd92d4d5236a3ab",
+"a7c7b0cd7703ab3a",
+"67344c96151bb264",
+"744b92a03dcad4a9",
+"e46047da93065732",
+"8080c9e67d283f1a",
+"6d7037b1b10cdca9",
+"efff9f2d784e3667",
+"a858b886e9901564",
+"0001511af0bbf902",
+"60b96f1ddd054984",
+"6491591d00dd8e2a",
+"649285de4142b043",
+"0cf0c27e33028987",
+"3ddac4c502396a16",
+"b0e06aa9add2e6f9",
+"6c097c1080831604",
+"f0838835405a673f",
+"102c4a23c2027268",
+"a5c64c879a5d5778",
+"189b220053ce8411",
+"49f23c237f6b0a5e",
+"bb01ca96030b2bb9",
+"bbfd559cc3615431",
+"a55739c5184ff765",
+"a1480b14961690b7",
+"43fdd04d31fdb4d2",
+"bd01ae0d2a329e78",
+"de42d7414f8c38c7",
+"0c39622475effd46",
+"0a81952ad19f2334",
+"7f0566bc24937dc4",
+"ca6f7d91c9765a46",
+"a7255f8907b1097a",
+"9b0a23fa8beee242",
+"5a4277ee677b9554",
+"0710650b890009d5",
+"acb6e7eb8db08a91",
+"fe03cbecde3b0799",
+"7cb3217843ea531d",
+"a08a721ed76efe56",
+"14ba1f4b4f8e1caf",
+"97aae7035de23b58",
+"e31748961de02930",
+"89b90735320248b3",
+"c47cd52126290775",
+"3cdd65d13eaf3092",
+"1c8b0511f0903f15",
+"8a02ded568026ef4",
+"faae1f140bc16ff7",
+"eebf263d3fa73aac",
+"a3dde209465bbe8c",
+"0f20e04d0eaedd2b",
+"8a2a6686113fda04",
+"00cc8a2dac3ee461",
+"ea42038080e80dcc",
+"152be7bed11537e9",
+"a4cdea45ab22acc6",
+"e3ee9c618b94ebca",
+"56360a8aa183b675",
+"afcbec642c7111a2",
+"92f83b274dcbbe6e",
+"a84b939a0a3632c2",
+"c41af7cfba244a00",
+"fbca226b3fb6b93e",
+"39a0a615039636f3",
+"d05f25fec2eab139",
+"e8a22e3b62092a15",
+"aa4619d8d5fdd068",
+"cb63eabab0c611aa",
+"4b61133e2aaf84cb",
+"06e38946ba6aa911",
+"700282cff2918097",
+"aa7f9e149e1b31a9",
+"234991f61a026851",
+"d59c62af5e0e2387",
+"daf4d350250acdf8",
+"2f181c84507c655b",
+"90236edd0fec2ca1",
+"fcf6a8a583dc44c3",
+"595d0ed928ae5e3b",
+"0a79e28e5db90534",
+"dc2e34d6b649865e",
+"2385ba490c5b2275",
+"ccbb1c1b5ba44a9c",
+"77b8553e347e39f8",
+"da13ae89138abbf8",
+"b09396c651fa1793",
+"20bb2f9bb892d15b",
+"130d3b8da532b9e1",
+"12fba28e70097d0c",
+"79a33699b743975f",
+"6b023882acbfbaa0",
+"73dca60ad6ac00da",
+"62cef93962895178",
+"51a2a36e424fd27e",
+"f8fca4f78ffc4416",
+"2398d000528edac2",
+"9281db7bf73a8369",
+"d56654025911da24",
+"94d1cf96fcd80413",
+"b542f2934a415240",
+"3201375a3be62a3e",
+"7176e9f9723bf8fb",
+"016624dca797c0be",
+"f8e8ed21b9c0d90e",
+"2f2c81549cb85299",
+"4103ea3267d6c4c5",
+"2213da4386060073",
+"2ce7a104d59463ec",
+"997b35165072d02a",
+"912473b55d7c27bb",
+"f41b807792db8ec4",
+"1eb300019f104ee3"];
+
+/* ==================== 内容配置区 ==================== */
+
+/* 爱情三角三维度 */
+const DIMS = ["亲密","激情","承诺"];
+
+/*
+  8 种爱情剧本 = 斯滕伯格爱情三角的 8 种组合
+  组合顺序：[亲密高?, 激情高?, 承诺高?]
+*/
+const ARCH = {
+  xiangru: {
+    name:"相濡以沫型",
+    sub:"圆满之爱 · 最健康的模样",
+    theory:"圆满之爱（Consummate Love）",
+    combo:[1,1,1],
+    tags:["亲密满格","心动常在","认定彼此"],
+    portrait:"你是极少见的「三角齐全」型：和 TA 无话不谈、见到 TA 仍然会心动，也把 TA 认真写进了未来。心理学认为这是爱情最圆满的状态——既有朋友般的深度理解，又有恋人般的炽热吸引，还有共度一生的决心。",
+    blind:"圆满之爱最怕「习以为常」。激情会随时间自然波动，若把一切都当作理所当然，三角会悄悄缺掉一角。",
+    advice:"定期制造「新体验」——一起去没去过的地方，别让日子只剩习惯。圆满需要经营，不只是天生。",
+    lines:["懂我、心动、认定你，我全占了。","日子很长，但我还是想跟你过。","别人有的浪漫我们有，别人没有的懂得我们也有。"],
+    match:{name:"细水长流型", why:"你们都是长期主义者，不作不闹，能把圆满稳稳守住，日子越过越厚"},
+  },
+  jinghong: {
+    name:"惊鸿一瞥型",
+    sub:"浪漫之爱 · 心动与懂得都在",
+    theory:"浪漫之爱（Romantic Love）",
+    combo:[1,1,0],
+    tags:["一见心动","灵魂共鸣","还没谈未来"],
+    portrait:"你的爱情里，亲密和激情都在线：你们懂彼此、在一起有化学反应，只是还没认真聊过「我们要往哪走」。心理学把这叫浪漫之爱——很美好，也带着不确定性。",
+    blind:"只有浪漫没有承诺的关系，容易被现实的浪冲散。上头期过去之后，靠什么留下？",
+    advice:"别急着定义关系，但也别一直回避。找个合适的时机，认真聊一次未来。",
+    lines:["我们心动是真的，方向还没定也是真的。","别急着问我未来，先享受这一刻。","但我其实，想知道你愿不愿意认真。"],
+    match:{name:"细水长流型", why:"TA 给你落地的踏实，你给 TA 久违的心跳，正好补上彼此缺的那一角"},
+  },
+  xishui: {
+    name:"细水长流型",
+    sub:"同伴之爱 · 最牢固的陪伴",
+    theory:"同伴之爱（Companionate Love）",
+    combo:[1,0,1],
+    tags:["安稳","信任","一起扛事"],
+    portrait:"你要的不是轰轰烈烈，是舒服：无话不说的默契 + 一起过日子的决心。心理学把这种「亲密+承诺、激情温和」的状态叫同伴之爱——大量白头偕老的爱情，最后都长成这个样子。",
+    blind:"太稳的爱情容易少了点心动。激情偏低不是问题，但别让它低到只剩「搭伙过日子」。",
+    advice:"定期给对方一点小惊喜、小浪漫，让平淡的日子偶尔发个光。温情是底色，别忘了偶尔加点火花。",
+    lines:["我不要烟花，我要每天的晚饭。","爱到最后，都是陪伴。","日子平淡，但我没想过换人。"],
+    match:{name:"惊鸿一瞥型", why:"TA 的浪漫能把你从习惯里拽出来，你的安稳也能让 TA 不再飘着"},
+  },
+  huanxi: {
+    name:"欢喜冤家型",
+    sub:"喜欢之爱 · 知己以上恋人未满",
+    theory:"喜欢之爱（Liking）",
+    combo:[1,0,0],
+    tags:["无话不谈","互怼","还差临门一脚"],
+    portrait:"你们之间最浓的是亲密：懂彼此、能互怼、有灵魂的默契，但心动的火苗和「认定」的决心都还差一口气。心理学把这叫喜欢之爱——很多好关系的前奏，也可能是友情以上的原地踏步。",
+    blind:"一直停在「懂」而不「燃」，容易被归类成朋友。「我们到底是什么」不解决，就永远差临门一脚。",
+    advice:"如果心里有火苗，就试着点破一次；如果没有，也别硬装恋人。搞清楚自己要什么，比拖着强。",
+    lines:["你懂我，比谁都懂。","但我们之间，还差一层窗户纸。","我怕戳破，又怕永远不戳破。"],
+    match:{name:"飞蛾扑火型", why:"TA 敢往前冲，能替你捅破那层窗户纸；你的懂得也能让 TA 慢下来看清人"},
+  },
+  aier: {
+    name:"爱而不得型",
+    sub:"迷恋之爱 · 上头但没落地",
+    theory:"迷恋之爱（Infatuation）",
+    combo:[0,1,0],
+    tags:["强烈心动","患得患失","未深入了解"],
+    portrait:"你为 TA 魂牵梦萦、心跳加速，但你们之间还没有足够的深度理解，也还没有承诺。心理学把这叫迷恋——强烈的激情燃烧在没有地基的地方，所以它美丽，也容易受伤。",
+    blind:"你爱上的往往是「想象中的 TA」，不是真实的 TA。自我感动的投入，最后伤到的只有自己。",
+    advice:"把迷恋和爱分开看。要么鼓起勇气问清楚，要么给自己设一个止损点，别再让想象消耗你。",
+    lines:["我放不下的，是我想象里的你。","你说句话，我就有勇气问一句。","可我也怕，答案不是我要的。"],
+    match:{name:"细水长流型", why:"你需要一个把你从想象里拉回现实的人，TA 的稳定正好是解药"},
+  },
+  xiangjing: {
+    name:"相敬如宾型",
+    sub:"空洞之爱 · 有承诺缺温度",
+    theory:"空洞之爱（Empty Love）",
+    combo:[0,0,1],
+    tags:["有责任","体面","心却远了"],
+    portrait:"你们还彼此担着责任、维持着体面，但心与心之间已经不太靠近了：没有了深入的交流，也少了心动。心理学把这叫空洞之爱——很多长期关系走到后期，就是这个样子。",
+    blind:"靠「责任」硬撑的关系，双方都会越来越孤独。表面和谐，内里空转。",
+    advice:"别假装没事。坦诚谈一次：是修复，还是体面结束？空转的感情，拖得越久越难收场。",
+    lines:["我们还在，但我们不在了。","不是没感情，是不知道感情去哪了。","要不要，重新认识一次？"],
+    match:{name:"欢喜冤家型", why:"你们缺的不是责任，是重新聊天、重新靠近——先从做回朋友开始"},
+  },
+  feie: {
+    name:"飞蛾扑火型",
+    sub:"愚蠢之爱 · 快热也快冷",
+    theory:"愚蠢之爱（Fatuous Love）",
+    combo:[0,1,1],
+    tags:["猛烈","快速认定","缺乏了解"],
+    portrait:"你爱得很猛：上头、认定、扑上去，速度之快连了解都来不及。心理学把这叫愚蠢之爱——激情和承诺都很足，唯独缺了亲密的打底，最容易闪婚闪离。",
+    blind:"爱得越快，越容易看走眼。上头期你会自动补全 TA 的缺点，等清醒过来才看见落差。",
+    advice:"激情上头时，给自己留一个「了解期」：多一起经历事、多聊三观，别急着把未来全押上。",
+    lines:["我知道危险，但我还是想扑过去。","不是我不清醒，是我太想你了。","可我也想确认，我们认不认识真正的彼此。"],
+    match:{name:"细水长流型", why:"TA 能让你慢下来，在上头期之后还愿意认真了解真正的你"},
+  },
+  xiangwang: {
+    name:"相忘江湖型",
+    sub:"无爱状态 · 还没遇见或已放下",
+    theory:"无爱（Nonlove）",
+    combo:[0,0,0],
+    tags:["自由","放空","不将就"],
+    portrait:"你现在的三角处于「待机」状态：没有强烈的亲密联结，也没有心动的对象或承诺的牵绊。可能是还没遇见让你认真的人，也可能是刚结束一段、心在放空。这没什么不好——这是你的自由期。",
+    blind:"把「没心动」当成「不会爱了」，会错过真正适合你的人。",
+    advice:"不用急着填满空白。先把自己过好，爱情来了自然接得住。江湖路远，先做自己的主角。",
+    lines:["我一个人，也挺好。","不是不相信爱情，是还没到。","如果哪天心动，我希望是真的。"],
+    match:{name:"惊鸿一瞥型", why:"一个让你重新心动的人，比一百个道理都管用；别急着否定心动这件事"},
+  }
+};
+
+/* 剧本 → 匹配顺序 */
+const ARCH_ORDER = ["xiangru","jinghong","xishui","huanxi","aier","xiangjing","feie","xiangwang"];
+
+/*
+  16 道题：[分类, 题干, [[选项, 维度], ...]]
+  每个选项只映射一个维度；界面不显示维度标签。「零」表示不计分。
+*/
+const QUESTIONS = [
+  ["心动 · 瞬间","你突然发现自己对一个人上头，最可能是哪种瞬间？",[
+    ["TA 冲你笑了一下，就那一下，心跳漏拍","激情"],
+    ["TA 记得你随口说过的喜好，你觉得被看见了","亲密"],
+    ["TA 做事靠谱、靠谱到让你觉得可以托付","承诺"],
+    ["说不清，好像没有什么具体的瞬间","零"]
+  ]],
+  ["暧昧 · 聊天","凌晨 TA 给你分享了一首歌，一个字都没说。你会？",[
+    ["反复听，心里一直琢磨 TA 是什么意思","激情"],
+    ["回一句「这歌我也在循环」，把话头接住","亲密"],
+    ["想着找机会约 TA 出来，认真认识一下","承诺"],
+    ["点个赞或者已读，不会多想","零"]
+  ]],
+  ["暧昧 · 节奏","你们天天聊，已经三个月了，谁都没捅破。你心里怎么想？",[
+    ["每天点开对话框之前，心跳都会加速","激情"],
+    ["享受这种聊天，觉得懂彼此就挺好","亲密"],
+    ["想找机会认真聊聊，我们到底是什么关系","承诺"],
+    ["无所谓，聊着聊着自然就有结果了","零"]
+  ]],
+  ["约会 · 安排","TA 问你想吃什么，你说都行，TA 说「那我订了」。你心里？",[
+    ["有点心动，喜欢 TA 这种利落的样子","激情"],
+    ["想借着吃饭多聊聊 TA 喜欢什么","亲密"],
+    ["踏实，TA 有主见会安排，靠谱","承诺"],
+    ["吃什么不重要，无所谓","零"]
+  ]],
+  ["相处 · 习惯","住一起后发现 TA 袜子乱扔、脏衣服堆一筐。你会？",[
+    ["越看越觉得这点小毛病有点可爱","激情"],
+    ["直接说「袜子能不能进筐」，不想憋着","亲密"],
+    ["忍一忍，想着爱一个人就要接受 TA 的习惯","承诺"],
+    ["各管各的，互不干涉就行","零"]
+  ]],
+  ["吵架 · 当下","你们吵得很凶，TA 摔门出去了。你第一反应？",[
+    ["又气又急，其实心里很怕失去 TA","激情"],
+    ["追出去，必须当面把话说清楚","亲密"],
+    ["心里慌，想着这段感情不能就这么散了","承诺"],
+    ["先冷静下来，等 TA 回来再说","零"]
+  ]],
+  ["吵架 · 冷战","TA 两天没回你消息。你会？",[
+    ["刷了无数次对话框，心里发慌","激情"],
+    ["想等 TA 忙完，好好聊聊别让误会攒着","亲密"],
+    ["想着我们的事得好好谈，不能这么拖着","承诺"],
+    ["正好，各自冷静一下","零"]
+  ]],
+  ["周围 · 评价","身边朋友说你们俩不太合适。你会？",[
+    ["心里反而更坚定：越说不行我越要在一起","激情"],
+    ["想跟 TA 认真聊聊，听听 TA 怎么想","亲密"],
+    ["会认真想想朋友的顾虑，也想办法让 TA 融入","承诺"],
+    ["感情是自己的事，别人怎么说影响不大","零"]
+  ]],
+  ["日常 · 忙碌","TA 最近特别忙，很少见面。你会？",[
+    ["有点失落，但想攒着这份想念，见面好好补偿","激情"],
+    ["想多视频、多分享日常，保持联结","亲密"],
+    ["理解，等 TA 忙完再安排见面","承诺"],
+    ["也忙自己的，见不见无所谓","零"]
+  ]],
+  ["关系 · 公开","你们在一起了，关于公开这件事你？",[
+    ["恨不得让全世界都知道","激情"],
+    ["想带 TA 见朋友，融进彼此的生活","亲密"],
+    ["觉得该认真规划两个人的未来了","承诺"],
+    ["不太想公开，两个人知道就行","零"]
+  ]],
+  ["付出 · 金钱","TA 最近经济上有点紧张。你会？",[
+    ["心疼 TA，反而更想靠近 TA","激情"],
+    ["想多陪陪 TA，不让 TA 一个人扛","亲密"],
+    ["想帮 TA，觉得 TA 的事就是我的事","承诺"],
+    ["觉得成年人该管好自己的事","零"]
+  ]],
+  ["未来 · 期待","TA 说「以后咱们一起去 XXX 吧」。你会？",[
+    ["心里已经开始期待那天的到来了","激情"],
+    ["开始和 TA 聊细节，想象一起的生活","亲密"],
+    ["认真琢磨这事怎么安排、怎么实现","承诺"],
+    ["随口应着，没太当真","零"]
+  ]],
+  ["关系 · 缺点","你发现 TA 有个你不太能接受的缺点。你会？",[
+    ["越想越觉得 TA 连缺点都有点可爱","激情"],
+    ["直接跟 TA 说出来，不想藏着掖着","亲密"],
+    ["心里打鼓，但觉得可以一起磨合","承诺"],
+    ["觉得不合适就算了，不想勉强","零"]
+  ]],
+  ["低谷 · 陪伴","TA 情绪很低落，不想说话。你会？",[
+    ["想尽办法逗 TA 开心","激情"],
+    ["什么都不说，就安静地陪着 TA","亲密"],
+    ["告诉 TA 不管怎样我都在","承诺"],
+    ["给 TA 空间，等 TA 自己缓过来","零"]
+  ]],
+  ["内心 · 关于爱","半夜睡不着，你问自己「我要的到底是什么」，先蹦出来的是？",[
+    ["某天 TA 看着你，你觉得就是 TA 了的那一眼","激情"],
+    ["两个人瘫在沙发上各刷各手机也不尴尬","亲密"],
+    ["一起规划过的未来，想去的城市、想过的日子","承诺"],
+    ["一个人也挺好，不一定要有答案","零"]
+  ]],
+  ["内心 · 坚持","这段感情里，最让你放不下的是？",[
+    ["那些心跳加速的时刻","激情"],
+    ["无话不谈的默契，TA 最懂我","亲密"],
+    ["和 TA 在一起的安心感，认定就是 TA 了","承诺"],
+    ["说实话，好像没什么放不下的","零"]
+  ]],
+  ["距离 · 异地","TA 要去另一个城市发展，你们要开始异地了。你的第一念头？",[
+    ["想到见不到 TA，心里就空了一块","激情"],
+    ["想好怎么保持联系，每天都得聊上几句","亲密"],
+    ["开始算时间：多久能结束异地、怎么走到一起","承诺"],
+    ["顺其自然吧，能走多远算多远","零"]
+  ]],
+  ["关系 · 见家长","TA 第一次带你回家吃饭。你真正在意的是？",[
+    ["有点紧张也有点甜，感觉两个人又近了一步","激情"],
+    ["想借这顿饭多了解 TA 的家人和 TA 长大的样子","亲密"],
+    ["觉得这是认真交往的信号，心里更踏实了","承诺"],
+    ["吃顿饭而已，没想那么多","零"]
+  ]],
+  ["仪式 · 纪念日","恋爱一周年，TA 忘了。你会？",[
+    ["嘴上说没事，其实心里挺失落的","激情"],
+    ["直接告诉 TA：我希望被你放在心上","亲密"],
+    ["觉得仪式感可以两个人一起补上，日子还得过","承诺"],
+    ["忘了就忘了，我本来也不在意这些","零"]
+  ]],
+  ["日常 · 被误解","你被外人误会，TA 当场没帮你说话。事后你？",[
+    ["心里委屈，特别想 TA 能站在我这边","激情"],
+    ["跟 TA 讲清当时的感受，不想留疙瘩","亲密"],
+    ["会想：以后遇到事，我们能不能一致对外","承诺"],
+    ["无所谓，我自己解释得清","零"]
+  ]],
+  ["日常 · 分享欲","你看到一朵很奇怪的云，第一反应是？",[
+    ["拍下来想发给 TA，想让 TA 也看见我看见的","激情"],
+    ["发给 TA，顺便问问 TA 今天过得怎么样","亲密"],
+    ["想着晚上见面的时候再一起看","承诺"],
+    ["看一眼就过了，不会想到要分享","零"]
+  ]],
+  ["内心 · 让步","有件事你们谁也说服不了谁。最后通常是？",[
+    ["吵着吵着就心软了，不忍心让 TA 难过","激情"],
+    ["各退一步，先把话说透再说结论","亲密"],
+    ["想想这段关系比这件事重要，让一步没关系","承诺"],
+    ["那就各按各的来，不用非得统一","零"]
+  ]]
+];
+
+/* ==================== 访问码系统 ==================== */
+
+const STORE_KEY = "loveTestV1";
+
+function hashCode(s){
+  let h1 = 0x811C9DC5, h2 = 0x01000193;
+  for(let i=0;i<s.length;i++){
+    const c = s.charCodeAt(i);
+    h1 = (h1 ^ c) >>> 0;
+    h1 = Math.imul(h1, 0x01000193) >>> 0;
+    h2 = (h2 + (Math.imul((h2 ^ c) >>> 0, 0x85EBCA6B) >>> 0)) >>> 0;
+    h2 = (((h2 << 13) | (h2 >>> 19)) >>> 0);
+  }
+  return ("00000000" + h1.toString(16)).slice(-8) + ("00000000" + h2.toString(16)).slice(-8);
+}
+
+function loadStore(){
+  try{
+    const raw = localStorage.getItem(STORE_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  return { uses:{}, tries:0, lockUntil:0, unlocked:null, progress:null };
+}
+function saveStore(s){
+  try{ localStorage.setItem(STORE_KEY, JSON.stringify(s)); }catch(e){}
+}
+let store = loadStore();
+
+function isExpired(){
+  if(!EXPIRE_DATE) return false;
+  return new Date().getTime() > new Date(EXPIRE_DATE + " 23:59:59").getTime();
+}
+
+function checkCode(){
+  const v = (document.getElementById('codeInput').value || "").trim();
+  const err = document.getElementById('codeErr');
+
+  if(!/^\d{6}$/.test(v)){ err.textContent = "请输入 6 位数字访问码"; return; }
+
+  const now = Date.now();
+  if(store.lockUntil && now < store.lockUntil){
+    const sec = Math.ceil((store.lockUntil - now)/1000);
+    err.textContent = "尝试次数过多，请 " + sec + " 秒后再试";
+    return;
+  }
+
+  if(isExpired()){ err.textContent = "访问码已过期，请联系卖家补发"; return; }
+
+  const h = hashCode(ACCESS_SALT + v);
+  const idx = CODE_HASHES.indexOf(h);
+
+  if(idx < 0){
+    store.tries = (store.tries || 0) + 1;
+    if(store.tries >= 5){ store.lockUntil = now + 60*1000; store.tries = 0; }
+    saveStore(store);
+    err.textContent = "访问码无效，请核对后重试";
+    return;
+  }
+
+  const used = store.uses[idx] || 0;
+  if(used >= MAX_USE_PER_CODE){
+    err.textContent = "该访问码已达使用上限，请联系卖家";
+    return;
+  }
+
+  store.uses[idx] = used + 1;
+  store.tries = 0; store.lockUntil = 0;
+  store.unlocked = idx;
+  store.progress = null;
+  saveStore(store);
+
+  err.textContent = "";
+  enterIntro();
+}
+document.getElementById('codeInput').addEventListener('keydown', e=>{
+  if(e.key === 'Enter') checkCode();
+});
+document.getElementById('codeInput').addEventListener('input', function(){
+  this.value = this.value.replace(/\D/g,'').slice(0,6);
+});
+
+/* ==================== 流程 ==================== */
+
+let state = { idx:0, scores:{亲密:0, 激情:0, 承诺:0}, answers:[] };
+
+function show(id){
+  ['pageCode','pageIntro','pageQuiz','pageResult'].forEach(p=>{
+    document.getElementById(p).classList.add('hidden');
+  });
+  document.getElementById(id).classList.remove('hidden');
+}
+
+function enterIntro(){
+  show('pageIntro');
+  window.scrollTo({top:0});
+  if(store.progress && store.progress.finished){
+    // 已测完过，直接进入结果
+    state.scores = store.progress.scores || {亲密:0, 激情:0, 承诺:0};
+    state.idx = QUESTIONS.length;
+    document.getElementById('pageIntro').classList.add('hidden');
+    document.getElementById('pageResult').classList.remove('hidden');
+    finish(true);
+  } else if(store.progress && store.progress.idx > 0){
+    state.idx = store.progress.idx;
+    state.scores = store.progress.scores || {亲密:0, 激情:0, 承诺:0};
+    state.answers = store.progress.answers || [];
+    document.getElementById('pageIntro').classList.add('hidden');
+    document.getElementById('pageQuiz').classList.remove('hidden');
+    renderQ();
+    syncBar();
+  }
+}
+
+function startQuiz(){
+  state = { idx:0, scores:{亲密:0, 激情:0, 承诺:0}, answers:[] };
+  store.progress = { idx:0, scores:state.scores, answers:[], finished:false };
+  saveStore(store);
+  show('pageQuiz');
+  renderQ();
+  window.scrollTo({top:0});
+}
+
+function syncBar(){
+  const p = state.idx / QUESTIONS.length * 100;
+  document.getElementById('bar').style.width = p + '%';
+}
+
+function renderQ(){
+  const q = QUESTIONS[state.idx];
+  syncBar();
+  document.getElementById('qCat').textContent = q[0] + ' · ' + (state.idx+1) + '/' + QUESTIONS.length;
+  document.getElementById('qTitle').textContent = q[1];
+  const box = document.getElementById('qOpts');
+  box.innerHTML = '';
+  q[2].forEach((opt, oi)=>{
+    const btn = document.createElement('button');
+    btn.className = 'opt' + (state.answers[state.idx] === oi ? ' selected' : '');
+    btn.innerHTML = '<span class="dot"></span><span class="txt"><b>' + opt[0] + '</b></span>';
+    btn.onclick = ()=>{
+      const prev = state.answers[state.idx];
+      if(prev !== undefined && prev !== oi){
+        const pd = QUESTIONS[state.idx][2][prev][1];
+        if(pd !== '零') state.scores[pd] = Math.max(0, (state.scores[pd]||0) - 1);
+      }
+      if(prev !== oi){
+        const d = opt[1];
+        if(d !== '零') state.scores[d] = (state.scores[d]||0) + 1;
+      }
+      state.answers[state.idx] = oi;
+      box.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));
+      btn.classList.add('selected');
+      saveProgress();
+      setTimeout(()=>nextQ(), 280);
+    };
+    box.appendChild(btn);
+  });
+  document.getElementById('prevBtn').style.visibility = state.idx===0 ? 'hidden' : 'visible';
+}
+
+function saveProgress(){
+  store.progress = { idx:state.idx, scores:state.scores, answers:state.answers, finished:false };
+  saveStore(store);
+}
+
+function nextQ(){
+  state.idx++;
+  if(state.idx >= QUESTIONS.length){
+    finish(false);
+  } else {
+    saveProgress();
+    renderQ();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+}
+function prevQ(){
+  if(state.idx > 0){ state.idx--; saveProgress(); renderQ(); }
+}
+
+function restart(){
+  if(confirm("确定要重新测试吗？当前结果会清空。")){
+    startQuiz();
+  }
+}
+
+function finish(){
+  show('pageResult');
+  store.progress = { idx:state.idx, scores:state.scores, answers:state.answers, finished:true };
+  saveStore(store);
+
+  /* 三轴占比：三者相加约 100%，即「你的爱情由什么构成」 */
+  const total = DIMS.reduce((a,d)=>a + (state.scores[d]||0), 0);
+  const pct = DIMS.map(d => total > 0 ? Math.round((state.scores[d]||0)/total*100) : 0);
+  const hi = (total >= MIN_VALID) ? pct.map(v => v >= HIGH_PCT ? 1 : 0) : [0,0,0];
+
+  let best = null;
+  for(const key of ARCH_ORDER){
+    const c = ARCH[key].combo;
+    if(c[0]===hi[0] && c[1]===hi[1] && c[2]===hi[2]){ best = key; break; }
+  }
+  if(!best) best = "xiangwang";
+  const arch = ARCH[best];
+
+  const dimExplain = {
+    亲密:"心与心的贴近：倾诉、理解、信任、愿意向 TA 展示脆弱",
+    激情:"心动的火焰：吸引力、上头感、见到 TA 时的化学反应",
+    承诺:"认定的决心：把 TA 放进规划、吵架也不离开、愿意共担未来"
+  };
+
+  const el = document.getElementById('pageResult');
+  el.innerHTML =
+    '<div class="card result-hero">' +
+      '<div class="stamp">你的爱情剧本</div>' +
+      '<h1>' + arch.name + '</h1>' +
+      '<div class="muted" style="font-size:15px">' + arch.sub + '</div>' +
+      '<div class="quote">心理学对应：' + arch.theory + '</div>' +
+      '<div class="tag-row">' + arch.tags.map(t=>'<span>'+t+'</span>').join('') + '</div>' +
+    '</div>' +
+
+    '<div class="card sec">' +
+      '<h3>01 · 你的爱情三角</h3>' +
+      DIMS.map((d,i)=>'<div class="dim-row"><span class="name">'+d+'</span><span class="bar"><i style="width:'+pct[i]+'%"></i></span><span class="num">'+pct[i]+'</span></div>').join('') +
+      '<p style="margin-top:12px;font-size:13px;color:#7A5A68">' +
+        '三条相加约 100，是它们在你的爱情里各占多少。' +
+        DIMS.map(d=>'<b style="color:var(--pink-deep)">'+d+'</b>：'+dimExplain[d]).join('<br>') +
+      '</p>' +
+    '</div>' +
+
+    '<div class="card sec">' +
+      '<h3>02 · 理论依据</h3>' +
+      '<p>斯滕伯格把爱情拆成三种成分：<b style="color:var(--pink-deep)">亲密、激情、承诺</b>。你的组合是「' +
+        DIMS.map((d,i)=>d+(hi[i]?' 高':' 低')).join('、') + '」，对应心理学中的「' + arch.theory + '」——' +
+        arch.sub.replace(' · ','，') + '。</p>' +
+    '</div>' +
+
+    '<div class="card sec">' +
+      '<h3>03 · 这就是你</h3>' +
+      '<p>' + arch.portrait + '</p>' +
+    '</div>' +
+
+    '<div class="card sec">' +
+      '<h3>04 · 你的盲点</h3>' +
+      '<p>' + arch.blind + '</p>' +
+    '</div>' +
+
+    '<div class="card sec">' +
+      '<h3>05 · 给你的建议</h3>' +
+      '<p>' + arch.advice + '</p>' +
+    '</div>' +
+
+    '<div class="card sec">' +
+      '<h3>06 · 你的三句台词</h3>' +
+      '<ul class="lines">' + arch.lines.map(l=>'<li>“'+l+'”</li>').join('') + '</ul>' +
+    '</div>' +
+
+    '<div class="card sec">' +
+      '<h3>07 · 你的最佳拍档</h3>' +
+      '<p>最和你互补的是 <b style="color:var(--pink-deep)">' + arch.match.name + '</b>：' + arch.match.why + '。</p>' +
+    '</div>' +
+
+    '<div class="card sec">' +
+      '<h3>08 · 保存你的专属结果图</h3>' +
+      '<div id="imgBox"><div class="muted" style="text-align:center;padding:10px 0">结果图生成中…</div></div>' +
+      '<div class="tip-longpress" id="longpressTip" style="display:none">长按上方图片 → 保存到相册 / 发给朋友</div>' +
+      '<button class="btn ghost" style="margin-top:12px" onclick="downloadImg()">下载图片（电脑端可用）</button>' +
+    '</div>' +
+
+    '<div class="note">本测试基于斯滕伯格爱情三角理论的通俗化改编，仅供自我探索参考，不构成专业评估。</div>' +
+
+    '<div style="margin-top:18px">' +
+      '<button class="btn ghost" onclick="restart()">再测一次</button>' +
+    '</div>';
+
+  window.scrollTo({top:0});
+  window.__result = {arch, pct};
+  setTimeout(()=>buildImg(), 60);
+}
+
+/* ==================== Canvas 出图（支持微信长按保存） ==================== */
+
+function buildImg(){
+  const {arch, pct} = window.__result;
+  const W = 750, margin = 50;
+  const c = document.createElement('canvas');
+  const ctx = c.getContext('2d');
+
+  const wrap = (text, maxW) => {
+    ctx.font = '26px "PingFang SC", sans-serif';
+    const lines = []; let line = '';
+    for(const ch of text){
+      const test = line + ch;
+      if(ctx.measureText(test).width > maxW && line){
+        // 英文单词不拆行：把行尾的整段字母数字移到下一行
+        if(/[A-Za-z0-9]/.test(ch)){
+          const m = line.match(/[A-Za-z0-9]+$/);
+          if(m && m.index > 0){
+            lines.push(line.slice(0, m.index));
+            line = line.slice(m.index) + ch;
+            continue;
+          }
+        }
+        lines.push(line); line = ch;
+      } else line = test;
+    }
+    if(line) lines.push(line);
+    return lines;
+  };
+
+  const bodyW = W - margin*2;
+  const portraitLines = wrap(arch.portrait, bodyW);
+  const blindLines = wrap(arch.blind, bodyW);
+  const adviceLines = wrap(arch.advice, bodyW);
+  const matchLines = wrap(arch.match.name + '　' + arch.match.why, bodyW);
+  const brandH = BRAND_LINE ? 60 : 0;
+
+  const H = 240 + portraitLines.length*42 + 120 + DIMS.length*50 + 100
+          + blindLines.length*42 + 80 + adviceLines.length*42 + 120
+          + arch.lines.length*60 + 80 + matchLines.length*42 + 100 + brandH;
+  c.width = W; c.height = H;
+
+  const bg = ctx.createLinearGradient(0,0,0,H);
+  bg.addColorStop(0,'#FDF3F5'); bg.addColorStop(1,'#F8DDE5');
+  ctx.fillStyle = bg; ctx.fillRect(0,0,W,H);
+
+  let y = 70;
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#D4687F'; ctx.font = '600 22px sans-serif';
+  ctx.fillText('你骨子里是哪种爱情', W/2, y); y += 30;
+  ctx.fillStyle = '#4A2C3A'; ctx.font = '800 44px sans-serif';
+  ctx.fillText(arch.name, W/2, y+40); y += 60;
+  ctx.fillStyle = '#A88B96'; ctx.font = '400 22px sans-serif';
+  ctx.fillText(arch.sub + ' · ' + arch.theory, W/2, y); y += 40;
+
+  ctx.strokeStyle = '#F0CFD8'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(margin, y+10); ctx.lineTo(W-margin, y+10); ctx.stroke();
+  y += 50;
+
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#D4687F'; ctx.font = '700 22px sans-serif';
+  ctx.fillText('这就是你', margin, y); y += 20;
+  ctx.fillStyle = '#5A3D4A'; ctx.font = '400 26px "PingFang SC", sans-serif';
+  portraitLines.forEach(l=>{ ctx.fillText(l, margin, y+30); y += 42; });
+  y += 30;
+
+  ctx.fillStyle = '#D4687F'; ctx.font = '700 22px sans-serif';
+  ctx.fillText('你的爱情三角', margin, y); y += 30;
+  DIMS.forEach((d,i)=>{
+    ctx.fillStyle = '#7A5A68'; ctx.font = '400 22px sans-serif';
+    ctx.fillText(d, margin, y+22);
+    ctx.fillStyle = '#FBE9EE';
+    roundRect(ctx, margin+110, y+8, bodyW-160, 16, 8); ctx.fill();
+    ctx.fillStyle = '#E88BA0';
+    roundRect(ctx, margin+110, y+8, (bodyW-160)*pct[i]/100, 16, 8); ctx.fill();
+    ctx.fillStyle = '#D4687F'; ctx.font = '700 22px sans-serif'; ctx.textAlign='right';
+    ctx.fillText(pct[i], W-margin, y+24);
+    ctx.textAlign='left';
+    y += 50;
+  });
+  y += 20;
+
+  ctx.fillStyle = '#D4687F'; ctx.font = '700 22px sans-serif';
+  ctx.fillText('你的盲点', margin, y); y += 20;
+  ctx.fillStyle = '#5A3D4A'; ctx.font = '400 26px "PingFang SC", sans-serif';
+  blindLines.forEach(l=>{ ctx.fillText(l, margin, y+30); y += 42; });
+  y += 30;
+
+  ctx.fillStyle = '#D4687F'; ctx.font = '700 22px sans-serif';
+  ctx.fillText('给你的建议', margin, y); y += 20;
+  ctx.fillStyle = '#5A3D4A'; ctx.font = '400 26px "PingFang SC", sans-serif';
+  adviceLines.forEach(l=>{ ctx.fillText(l, margin, y+30); y += 42; });
+  y += 30;
+
+  ctx.fillStyle = '#D4687F'; ctx.font = '700 22px sans-serif';
+  ctx.fillText('你的三句台词', margin, y); y += 20;
+  arch.lines.forEach(l=>{
+    ctx.fillStyle = '#FBE9EE';
+    roundRect(ctx, margin, y, bodyW, 48, 10); ctx.fill();
+    ctx.fillStyle = '#4A2C3A'; ctx.font = '400 24px "PingFang SC", sans-serif';
+    ctx.fillText('“'+l+'”', margin+20, y+32);
+    y += 60;
+  });
+
+  y += 20;
+
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#D4687F'; ctx.font = '700 22px sans-serif';
+  ctx.fillText('你的最佳拍档', margin, y); y += 20;
+  ctx.fillStyle = '#5A3D4A'; ctx.font = '400 26px "PingFang SC", sans-serif';
+  matchLines.forEach(l=>{ ctx.fillText(l, margin, y+30); y += 42; });
+
+  y += 40;
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#A88B96'; ctx.font = '400 18px sans-serif';
+  ctx.fillText('爱情剧本 · 基于爱情三角理论的自我探索', W/2, y);
+  if(BRAND_LINE){
+    y += 34;
+    ctx.fillStyle = '#D4687F'; ctx.font = '600 20px sans-serif';
+    ctx.fillText(BRAND_LINE, W/2, y);
+  }
+
+  const url = c.toDataURL('image/png');
+  window.__imgUrl = url;
+  const box = document.getElementById('imgBox');
+  if(box){
+    box.innerHTML = '<img class="share-img" src="' + url + '" alt="我的爱情剧本结果">';
+    document.getElementById('longpressTip').style.display = 'block';
+  }
+}
+
+function downloadImg(){
+  if(!window.__imgUrl){ alert("图片还没生成好，稍等一下再点"); return; }
+  const a = document.createElement('a');
+  a.href = window.__imgUrl;
+  a.download = '我的爱情剧本.png';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+
+function roundRect(ctx,x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);
+  ctx.arcTo(x+w,y,x+w,y+h,r);
+  ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r);
+  ctx.arcTo(x,y,x+w,y,r);
+  ctx.closePath();
+}
+
+/* ==================== 商家后台：?admin=1 查看本机发码/用码情况 ==================== */
+(function(){
+  const q = new URLSearchParams(location.search);
+  const admin = q.get('admin');
+  if(admin === '1'){
+    document.getElementById('pageCode').classList.add('hidden');
+    const used = Object.keys(store.uses || {}).map(k=>'第 ' + (parseInt(k)+1) + ' 号：已使用 ' + store.uses[k] + ' 次');
+    const box = document.createElement('div');
+    box.className = 'card admin-box';
+    box.style.marginTop = '30px';
+    box.innerHTML =
+      '<h1 style="font-size:20px">商家后台（仅本机可见）</h1>' +
+      '<p><b>码库总量：</b>' + CODE_HASHES.length + ' 个</p>' +
+      '<p><b>每码可用次数：</b>' + MAX_USE_PER_CODE + ' 次</p>' +
+      '<p><b>有效期至：</b>' + EXPIRE_DATE + (isExpired() ? '（已过期）' : '') + '</p>' +
+      '<p><b>本机使用记录：</b><br>' + (used.length ? used.join('<br>') : '暂无') + '</p>' +
+      '<p class="muted">码的明文在《访问码台账.csv》里，按顺序发出后在表格里登记订单号即可。</p>';
+    document.querySelector('.wrap').appendChild(box);
+    return;
+  }
+
+  /* 已解锁过 → 免密直接进入 */
+  if(store.unlocked !== null && store.unlocked !== undefined){
+    if(isExpired()){
+      document.getElementById('codeNote').textContent = '访问码已过期，请联系卖家补发';
+    } else {
+      enterIntro();
+    }
+  }
+})();
+</script>
+</body>
+</html>
