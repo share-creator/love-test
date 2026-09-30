@@ -1017,6 +1017,19 @@ function roundRect(ctx,x,y,w,h,r){
     return;
   }
 
+  /* 带码直链 ?code= 自动填充并验证（用于自动发货：客人点开即进，无需手输密码） */
+  const preset = q.get('code');
+  if(preset && admin !== '1'){
+    if(store.unlocked !== null && store.unlocked !== undefined){
+      if(!isExpired()) enterIntro();   // 已解锁过，免密进，不重复消耗次数
+      return;
+    }
+    const inp = document.getElementById('codeInput');
+    if(inp) inp.value = preset;
+    checkCode();                       // 首次自动验证（成功则消耗 1 次并进入）
+    if(store.unlocked !== null && store.unlocked !== undefined) return;
+  }
+
   /* 已解锁过 → 免密直接进入 */
   if(store.unlocked !== null && store.unlocked !== undefined){
     if(isExpired()){
