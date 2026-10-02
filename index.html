@@ -119,6 +119,30 @@ h1 em{font-style:normal;color:var(--pink-deep)}
 .err{color:#C0392B;font-size:13px;margin-top:10px;text-align:center;min-height:18px}
 .admin-box{font-size:13px;color:#5A3D4A;line-height:1.9}
 .admin-box b{color:var(--pink-deep)}
+.dim-deep{background:var(--pink-soft);border:1px solid var(--pink-line);border-radius:14px;padding:12px 14px;margin:10px 0}
+.dd-head{display:flex;justify-content:space-between;align-items:center}
+.dd-head b{color:var(--pink-deep);font-size:16px}
+.dd-pct{font-weight:800;color:var(--pink-deep)}
+.dd-bar{height:8px;background:#fff;border-radius:4px;margin:8px 0;overflow:hidden;border:1px solid var(--pink-line)}
+.dd-bar i{display:block;height:100%;background:linear-gradient(90deg,#E88BA0,#D4687F);border-radius:4px}
+.dd-label{font-size:13.5px;font-weight:700;color:#4A2C3A;margin-bottom:4px}
+.dd-text{font-size:13.5px;color:#5A3D4A;line-height:1.7;margin:0}
+.plan-lead{font-size:13.5px;color:#7A5A68;margin:0 0 12px}
+.plan-grid{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:480px){.plan-grid{grid-template-columns:1fr 1fr 1fr}}
+.plan-col{background:var(--pink-soft);border:1px solid var(--pink-line);border-radius:14px;padding:12px}
+.plan-col>b{display:block;font-size:14px;color:var(--pink-deep);margin-bottom:8px}
+.plan-col ul{margin:0;padding-left:0;list-style:none}
+.plan-col li{font-size:13px;color:#5A3D4A;line-height:1.6;margin:6px 0;padding-left:18px;position:relative}
+.plan-col li:before{content:"\2713";position:absolute;left:0;color:#D4687F;font-weight:700}
+.rec-card{border:1px solid var(--pink-line);border-radius:14px;padding:12px 14px;margin:10px 0;background:#fff}
+.rec-head{display:flex;align-items:center;gap:8px}
+.rec-rank{flex:0 0 22px;height:22px;border-radius:7px;background:var(--pink-deep);color:#fff;font-size:12.5px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.rec-head b{flex:1;font-size:14.5px;color:#4A2C3A}
+.rec-pct{font-weight:800;color:var(--pink-deep)}
+.rec-bar{height:6px;background:var(--pink-soft);border-radius:3px;margin:8px 0 6px;overflow:hidden}
+.rec-bar i{display:block;height:100%;background:linear-gradient(90deg,#E88BA0,#D4687F);border-radius:3px}
+.rec-why{font-size:13px;color:#7A5A68;margin:0;line-height:1.6}
 </style>
 </head>
 <body>
@@ -216,6 +240,8 @@ const ARCH = {
     advice:"定期制造「新体验」——一起去没去过的地方，别让日子只剩习惯。圆满需要经营，不只是天生。",
     lines:["懂我、心动、认定你，我全占了。","日子很长，但我还是想跟你过。","别人有的浪漫我们有，别人没有的懂得我们也有。"],
     match:{name:"细水长流型", why:"你们都是长期主义者，不作不闹，能把圆满稳稳守住，日子越过越厚"},
+    plan:{near:["给对方写一条「具体感谢」：谢TA今天做的某件小事","策划一次不用手机的两人半天","把最近没说出口的小委屈讲出来"],mid:["建立属于你们的固定仪式：周五电影夜 / 月度复盘","一起学一件两人都不会的新技能","认真聊一次五年后的共同蓝图"],far:["把感恩练成习惯：别把最好的当成理所当然","保留各自的独处空间，圆满也需要呼吸","成为朋友圈的爱情样本，但别活成样本"]},
+    dating:[{name:"双人徒步 / 郊野露营",pct:92,why:"全程无干扰的长相处，是你们关系最好的养料"},{name:"年度关系复盘夜",pct:88,why:"你们有资本直面问题：把这一年的甜与坑摊开聊"},{name:"共同养一盆绿植或宠物",pct:85,why:"一起照顾一个生命，会把圆满感变成看得见的东西"}],
   },
   jinghong: {
     name:"惊鸿一瞥型",
@@ -228,6 +254,8 @@ const ARCH = {
     advice:"别急着定义关系，但也别一直回避。找个合适的时机，认真聊一次未来。",
     lines:["我们心动是真的，方向还没定也是真的。","别急着问我未来，先享受这一刻。","但我其实，想知道你愿不愿意认真。"],
     match:{name:"细水长流型", why:"TA 给你落地的踏实，你给 TA 久违的心跳，正好补上彼此缺的那一角"},
+    plan:{near:["把这次心动直接约成一次正式见面","把「在吗」换成具体邀约：时间、地点、事件","记下 3 个让你心动的瞬间，看清自己的模式"],mid:["心动之后，主动谈一次关系走向，把浪漫落地","给心动设 30 天冷静期，到期再决定要不要全押","把对人的痴迷分一点给生活本身"],far:["学会区分「心动」和「合适」，两者兼得才押注","让浪漫成为天赋而不是循环：稳定地爱一个人","练出承诺后，你会是最懂浪漫的那种长久"]},
+    dating:[{name:"凌晨的海边 / 日出计划",pct:93,why:"极致浪漫场景，正是你们关系的高光配方"},{name:"即兴短途旅行",pct:89,why:"说走就走的心跳感，你们最擅长消化"},{name:"手写信交换",pct:82,why:"把易逝的心动，落成可以保存的信物"}],
   },
   xishui: {
     name:"细水长流型",
@@ -240,6 +268,8 @@ const ARCH = {
     advice:"定期给对方一点小惊喜、小浪漫，让平淡的日子偶尔发个光。温情是底色，别忘了偶尔加点火花。",
     lines:["我不要烟花，我要每天的晚饭。","爱到最后，都是陪伴。","日子平淡，但我没想过换人。"],
     match:{name:"惊鸿一瞥型", why:"TA 的浪漫能把你从习惯里拽出来，你的安稳也能让 TA 不再飘着"},
+    plan:{near:["这周主动策划一次「不像你们」的约会","把一句平时羞于说出口的喜欢发出去","换个新话题：别只聊家常，聊聊各自的梦"],mid:["每月来一次「角色互换日」：去做对方热爱的事","建一张两人冒险清单，每季度完成一项","练习表达欲望：陪伴很贵，也要让它发光"],far:["警惕把爱情过成亲情：保留一点心跳感","你们的稳定是稀缺品，但要记得持续投入","一起变老的路上，每年重谈一次恋爱"]},
+    dating:[{name:"老地方 + 新玩法",pct:91,why:"熟悉的场景里加一件新鲜事，最对你们的胃口"},{name:"两人技能交换局",pct:87,why:"教对方一件你的擅长，陪伴里长出新话题"},{name:"周年重走初遇路线",pct:84,why:"把时间感变成仪式感，你们最吃这一套"}],
   },
   huanxi: {
     name:"欢喜冤家型",
@@ -252,6 +282,8 @@ const ARCH = {
     advice:"如果心里有火苗，就试着点破一次；如果没有，也别硬装恋人。搞清楚自己要什么，比拖着强。",
     lines:["你懂我，比谁都懂。","但我们之间，还差一层窗户纸。","我怕戳破，又怕永远不戳破。"],
     match:{name:"飞蛾扑火型", why:"TA 敢往前冲，能替你捅破那层窗户纸；你的懂得也能让 TA 慢下来看清人"},
+    plan:{near:["把吐槽换成一句真心夸奖，观察对方反应","约一次无手机深聊：只聊感受，不聊事情","写下你真正想要的感情长什么样"],mid:["练习把「友谊的懂」升级成「恋爱的表达」","试探性迈出半步，观察对方接不接得住","别用损友式玩笑掩盖真心，该认真时认真"],far:["想清楚：知己以上这一步，跨或不跨都要有答案","无论结果，这段懂你的关系都是你的财富","真跨过去了，学着让兄弟感和心动感并存"]},
+    dating:[{name:"剧本杀 / 密室双排",pct:92,why:"并肩解题的默契，是知己式关系的主场"},{name:"深夜大排档长谈",pct:88,why:"烟火气加松弛感，最容易聊出真话"},{name:"运动局：羽毛球 / 骑行",pct:85,why:"用并肩流汗替代尴尬表白，关系自然升温"}],
   },
   aier: {
     name:"爱而不得型",
@@ -264,6 +296,8 @@ const ARCH = {
     advice:"把迷恋和爱分开看。要么鼓起勇气问清楚，要么给自己设一个止损点，别再让想象消耗你。",
     lines:["我放不下的，是我想象里的你。","你说句话，我就有勇气问一句。","可我也怕，答案不是我要的。"],
     match:{name:"细水长流型", why:"你需要一个把你从想象里拉回现实的人，TA 的稳定正好是解药"},
+    plan:{near:["把写满对方名字的脑子，先借还给自己 24 小时","列出 TA 的 3 个真实缺点（滤镜外的那种）","跟朋友讲一遍这段感情，听听旁观者版本"],mid:["数一数回应率：真正的喜欢是双向的","把注意力转回自己：一件事、一个目标、一次变好","允许自己上头，但给投入设一条止损线"],far:["学会区分「爱」和「征服欲」或「习惯了」","你会遇到让你不用踮脚的人——要信","这次的执念，会变成你以后读懂爱的教材"]},
+    dating:[{name:"一个人也能去的展 / 电影",pct:90,why:"先练习把注意力还给自己，降低对TA的执念"},{name:"运动 / 健身打卡",pct:86,why:"用多巴胺替换执念，状态好时看人最准"},{name:"和好朋友的长谈饭局",pct:83,why:"旁观者视角，是滤镜最好的溶解剂"}],
   },
   xiangjing: {
     name:"相敬如宾型",
@@ -276,6 +310,8 @@ const ARCH = {
     advice:"别假装没事。坦诚谈一次：是修复，还是体面结束？空转的感情，拖得越久越难收场。",
     lines:["我们还在，但我们不在了。","不是没感情，是不知道感情去哪了。","要不要，重新认识一次？"],
     match:{name:"欢喜冤家型", why:"你们缺的不是责任，是重新聊天、重新靠近——先从做回朋友开始"},
+    plan:{near:["今晚主动聊一个非功能性话题（不聊家务孩子账单）","翻一次老照片或旧聊天记录，找回当初感觉","对 TA 说一句具体的欣赏，不许用玩笑包装"],mid:["重启约会：像刚认识那样单独出门","建立「吵架权利」：能吵的架才是活着的关系","一起做一件有点冒险的事，制造共同心跳"],far:["责任撑起的家，需要重新注入喜欢才完整","把「搭伙」升级回「同盟」：共同目标加共同乐子","别等孩子长大才想起来：你们首先是夫妻"]},
+    dating:[{name:"重演第一次约会",pct:91,why:"复刻心动现场，最能撬动封存的记忆"},{name:"双人新技能班（烹饪 / 舞蹈）",pct:87,why:"一起笨拙地学新东西，会重新笑出声"},{name:"无目的城市漫游",pct:84,why:"不谈责任的半天，只把对方当恋人"}],
   },
   feie: {
     name:"飞蛾扑火型",
@@ -288,6 +324,8 @@ const ARCH = {
     advice:"激情上头时，给自己留一个「了解期」：多一起经历事、多聊三观，别急着把未来全押上。",
     lines:["我知道危险，但我还是想扑过去。","不是我不清醒，是我太想你了。","可我也想确认，我们认不认识真正的彼此。"],
     match:{name:"细水长流型", why:"TA 能让你慢下来，在上头期之后还愿意认真了解真正的你"},
+    plan:{near:["上头期做决定前，强制过夜 24 小时","跟一个靠谱朋友同步恋情，当外置大脑","写下你在感情里最不能忍的 3 件事"],mid:["练习慢下来：激情是加分项，不是及格线","观察 TA 在平淡期的样子，那才是真身","别用新恋情给旧的止痛，先把自己拼好"],far:["把敢爱敢恨的天赋用在对的人身上","快冷不是缺陷，是及时止损的雷达","终局是：火烧得旺，人看得清"]},
+    dating:[{name:"刺激类体验：跳楼机 / 攀岩",pct:90,why:"高唤醒场景正中你的兴奋点，也检验对方抗压"},{name:"24 小时闪进闪出短途",pct:88,why:"浓度对等的浪漫，成本还可控"},{name:"冷静期清单打卡",pct:85,why:"上头期专用：把决定权从多巴胺手里拿回来"}],
   },
   xiangwang: {
     name:"相忘江湖型",
@@ -300,6 +338,8 @@ const ARCH = {
     advice:"不用急着填满空白。先把自己过好，爱情来了自然接得住。江湖路远，先做自己的主角。",
     lines:["我一个人，也挺好。","不是不相信爱情，是还没到。","如果哪天心动，我希望是真的。"],
     match:{name:"惊鸿一瞥型", why:"一个让你重新心动的人，比一百个道理都管用；别急着否定心动这件事"},
+    plan:{near:["列出你在关系里最看重的 3 样东西","参加一次能遇到新朋友的活动，哪怕围观","把「随缘」改成「愿意」：先给心动发张门票"],mid:["练习被喜欢：有人示好时，别急着关门","整理上一段：写下收获，然后真正翻篇","保持开放状态：状态对，人才会遇到"],far:["无爱不是失败，是蓄力——但别把门焊死","你值得一段让你想按下确认键的关系","保持好奇，爱来的时候你认得出来"]},
+    dating:[{name:"兴趣社群 / 体验课",pct:90,why:"在自然场景认识人，比刻意相亲舒服得多"},{name:"一个人的精品旅行",pct:86,why:"把自己状态调好，是遇到对的人的前提"},{name:"靠谱朋友的朋友局",pct:83,why:"熟人背书的相遇，成功率天然高一档"}],
   }
 };
 
@@ -628,6 +668,23 @@ function finish(){
   }
   if(!best) best = "xiangwang";
   const arch = ARCH[best];
+  const DIM_DEPTH = {
+    亲密:{
+      high:{label:"亲密满格 · 你的安全基地", text:"你敢于托付，也接得住对方的托付。对 TA 来说，你是那个「出事第一个想告诉」的人——这是很多关系求而不得的东西，别把它当成理所当然。"},
+      mid:{label:"亲密在线 · 还有升温空间", text:"你们能聊，但还没到「不设防」的程度。试着交换一件没说过的脆弱（一次尴尬、一个害怕），亲密感往往在坦诚之后跳一级。"},
+      low:{label:"亲密待唤醒 · 先从倾诉开始", text:"现在的你们更像「熟悉的陌生人」：同处一室，各玩各的手机。不必强行深谈，从「今天最崩溃的一件小事」聊起，比「我们谈谈吧」管用十倍。"}
+    },
+    激情:{
+      high:{label:"心动满格 · 关系的发动机", text:"你的心跳和上头感都是真的，这是关系最好的助燃剂。但记得：激情是油门不是方向盘，光靠它跑不远。"},
+      mid:{label:"心动在线 · 偶尔需要添柴", text:"心动还在，只是被日常磨得温吞。不用刻意制造大浪漫，一次突然的牵手、一条深夜的小情话，就能把火苗重新点着。"},
+      low:{label:"心动低电 · 警惕变成合租室友", text:"不是不爱，可能是太熟了。检测一下：你们上一次认真对视超过 5 秒是什么时候？重新约会一次，像刚认识那样打扮出门。"}
+    },
+    承诺:{
+      high:{label:"承诺满格 · 你的压舱石", text:"你把对方写进了未来里，这是最稀缺的深情。注意别让承诺变成「默认设置」——定期口头确认，彼此还想要同一个未来。"},
+      mid:{label:"承诺在线 · 差一句确认", text:"你心里有 TA，但没说透。承诺不怕早，怕含糊：把「以后再看」换成「我想和你走到那儿」，关系会立刻稳一半。"},
+      low:{label:"承诺待建 · 先别急着要答案", text:"你可能还在观望，或者被伤过不敢押注。没关系，承诺可以慢慢攒；但别一边享受对方的全押、一边给自己留后门——那才是真正的风险。"}
+    }
+  };
 
   const dimExplain = {
     亲密:"心与心的贴近：倾诉、理解、信任、愿意向 TA 展示脆弱",
@@ -682,12 +739,47 @@ function finish(){
     '</div>' +
 
     '<div class="card sec">' +
-      '<h3>07 · 你的最佳拍档</h3>' +
+      '<h3>07 · 三维度深度解读</h3>' +
+      DIMS.map((d,i)=>{
+        const lvl = pct[i]>=35?'high':(pct[i]>=15?'mid':'low');
+        const dep = DIM_DEPTH[d][lvl];
+        return '<div class="dim-deep">' +
+          '<div class="dd-head"><b>'+d+'</b><span class="dd-pct">'+pct[i]+'%</span></div>' +
+          '<div class="dd-bar"><i style="width:'+pct[i]+'%"></i></div>' +
+          '<div class="dd-label">'+dep.label+'</div>' +
+          '<p class="dd-text">'+dep.text+'</p>' +
+        '</div>';
+      }).join('') +
+    '</div>' +
+
+    '<div class="card sec">' +
+      '<h3>08 · 你的恋爱行动计划</h3>' +
+      '<p class="plan-lead">一份可以直接照着做的清单——从「看到结果」到「真正发生改变」。建议先从近期目标里挑 1-2 条开始。</p>' +
+      '<div class="plan-grid">' +
+        '<div class="plan-col"><b>🎯 近期 · 本周能做</b><ul>' + arch.plan.near.map(x=>'<li>'+x+'</li>').join('') + '</ul></div>' +
+        '<div class="plan-col"><b>📈 中期 · 1-3 个月</b><ul>' + arch.plan.mid.map(x=>'<li>'+x+'</li>').join('') + '</ul></div>' +
+        '<div class="plan-col"><b>🌅 长期 · 持续练习</b><ul>' + arch.plan.far.map(x=>'<li>'+x+'</li>').join('') + '</ul></div>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="card sec">' +
+      '<h3>09 · 恋爱灵感推荐</h3>' +
+      arch.dating.map((r,i)=>
+        '<div class="rec-card">' +
+          '<div class="rec-head"><span class="rec-rank">'+(i+1)+'</span><b>'+r.name+'</b><span class="rec-pct">'+r.pct+'%</span></div>' +
+          '<div class="rec-bar"><i style="width:'+r.pct+'%"></i></div>' +
+          '<p class="rec-why">'+r.why+'</p>' +
+        '</div>'
+      ).join('') +
+    '</div>' +
+
+    '<div class="card sec">' +
+      '<h3>10 · 你的最佳拍档</h3>' +
       '<p>最和你互补的是 <b style="color:var(--pink-deep)">' + arch.match.name + '</b>：' + arch.match.why + '。</p>' +
     '</div>' +
 
     '<div class="card sec">' +
-      '<h3>08 · 保存你的专属结果图</h3>' +
+      '<h3>11 · 保存你的专属结果图</h3>' +
       '<div id="imgBox"><div class="muted" style="text-align:center;padding:10px 0">结果图生成中…</div></div>' +
       '<div class="tip-longpress" id="longpressTip" style="display:none">长按上方图片 → 保存到相册 / 发给朋友</div>' +
       '<button class="btn ghost" style="margin-top:12px" onclick="downloadImg()">下载图片（电脑端可用）</button>' +
